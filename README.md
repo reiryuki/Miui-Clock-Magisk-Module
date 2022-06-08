@@ -4,7 +4,7 @@
 - Clock app by Xiaomi Inc.
 
 ## Screenshots
-- 
+- https://t.me/androidryukimods/547
 
 ## Requirements
 - NOT in Miui ROM
