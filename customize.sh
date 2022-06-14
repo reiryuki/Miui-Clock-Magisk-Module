@@ -7,6 +7,9 @@ else
   MAGISKTMP=`find /dev -mindepth 2 -maxdepth 2 -type d -name .magisk`
 fi
 
+# optionals
+OPTIONALS=/sdcard/optionals.prop
+
 # info
 MODVER=`grep_prop version $MODPATH/module.prop`
 MODVERCODE=`grep_prop versionCode $MODPATH/module.prop`
@@ -36,7 +39,7 @@ if [ "$BOOTMODE" != true ]; then
 fi
 FILE=$MODPATH/sepolicy.sh
 DES=$MODPATH/sepolicy.rule
-if [ -f $FILE ] && ! getprop | grep -Eq "sepolicy.sh\]: \[1"; then
+if [ -f $FILE ] && [ "`grep_prop sepolicy.sh $OPTIONALS`" != 1 ]; then
   mv -f $FILE $DES
   sed -i 's/magiskpolicy --live "//g' $DES
   sed -i 's/"//g' $DES
@@ -54,7 +57,7 @@ fi
 
 # global
 FILE=$MODPATH/service.sh
-if getprop | grep -Eq "miui.global\]: \[1"; then
+if [ "`grep_prop miui.global $OPTIONALS`" == 1 ]; then
   ui_print "- Global mode"
   sed -i 's/#g//g' $FILE
   ui_print " "
@@ -62,7 +65,6 @@ fi
 
 # cleaning
 ui_print "- Cleaning..."
-APP="`ls $MODPATH/system/priv-app` `ls $MODPATH/system/app`"
 PKG=com.miui.deskclock
 if [ "$BOOTMODE" == true ]; then
   for PKGS in $PKG; do
@@ -114,7 +116,8 @@ fi
 # cleanup
 DIR=/data/adb/modules/$MODID
 FILE=$DIR/module.prop
-if getprop | grep -Eq "miui.cleanup\]: \[1"; then
+if [ "`grep_prop data.cleanup $OPTIONALS`" == 1 ]; then
+  sed -i 's/^data.cleanup=1/data.cleanup=0/' $OPTIONALS
   ui_print "- Cleaning-up $MODID data..."
   cleanup
   ui_print " "
@@ -144,13 +147,9 @@ fi\' $MODPATH/post-fs-data.sh
 }
 
 # permissive
-if getprop | grep -Eq "permissive.mode\]: \[1"; then
+if [ "`grep_prop permissive.mode $OPTIONALS`" == 1 ]; then
   ui_print "- Using permissive method"
   rm -f $MODPATH/sepolicy.rule
-  permissive
-  ui_print " "
-elif getprop | grep -Eq "permissive.mode\]: \[2"; then
-  ui_print "- Using both permissive and SE policy patch"
   permissive
   ui_print " "
 fi
@@ -170,6 +169,7 @@ extract_lib() {
 }
 
 # extract
+APP="`ls $MODPATH/system/priv-app` `ls $MODPATH/system/app`"
 DES=lib/`getprop ro.product.cpu.abi`/*
 extract_lib
 
