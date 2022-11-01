@@ -4,7 +4,7 @@
 - Clock app by Xiaomi Inc. ported and integrated as a Magisk Module for all supported and rooted devices with Magisk
 
 ## Sources
-- apkmirror.com com.android.clock Xiaomi Inc.
+- apkmirror.com com.android.deskclock Xiaomi Inc.
 
 ## Screenshots
 - https://t.me/androidryukimods/547
