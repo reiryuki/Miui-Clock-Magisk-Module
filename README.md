@@ -1,5 +1,9 @@
 # Miui Clock Magisk Module
 
+## DISCLAIMER
+- Miui apps are owned by Xiaomi™.
+- The MIT license specified here is for the Magisk Module, not for Miui apps.
+
 ## Descriptions
 - Clock app by Xiaomi Inc. ported and integrated as a Magisk Module for all supported and rooted devices with Magisk
 
