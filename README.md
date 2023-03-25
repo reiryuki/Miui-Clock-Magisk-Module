@@ -23,10 +23,12 @@
 - Install Miui Core Magisk Module first: https://github.com/reiryuki/Miui-Core-Magisk-Module
 - Install this module https://www.pling.com/p/1821974/ via Magisk app or Recovery
 - Reboot
+- Go to app info of Miui Clock and allow the network access to be able to download online Timer sound
 
 ## Tested on
 - Android 12.1 Nusantara ROM
 - Android 13 AOSP ROM
+- Android 13 CrDroid ROM
 
 ## Optionals
 - https://t.me/androidryukimodsdiscussions/60861
