@@ -8,7 +8,7 @@
 - Clock app by Xiaomi Inc. ported and integrated as a Magisk Module for all supported and rooted devices with Magisk
 
 ## Sources
-- apkmirror.com com.android.deskclock Xiaomi Inc.
+- apkmirror.com com.android.deskclock by Xiaomi Inc.
 
 ## Screenshots
 - https://t.me/androidryukimods/547
@@ -29,6 +29,9 @@
 - Android 12.1 Nusantara ROM
 - Android 13 AOSP ROM
 - Android 13 CrDroid ROM
+
+## Known Issue
+- Does not unlock screen automatically
 
 ## Optionals
 - https://t.me/androidryukimodsdiscussions/60861

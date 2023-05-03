@@ -240,6 +240,21 @@ extract_file
 # hide
 hide_oat
 
+# media
+if [ ! -d $PRODUCT/media ] && [ -d $SYSTEM/media ]; then
+  ui_print "- Using /system/media instead of /product/media"
+  mv -f $MODPATH/system/product/media $MODPATH/system
+  rm -rf $MODPATH/system/product
+  ui_print " "
+elif [ ! -d $PRODUCT/media ] && [ ! -d $SYSTEM/media ]; then
+  ui_print "! /product/media & /system/media not found"
+  ui_print " "
+fi
+
+
+
+
+
 
 
 
