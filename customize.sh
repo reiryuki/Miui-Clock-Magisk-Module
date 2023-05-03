@@ -105,6 +105,17 @@ rm -rf /persist/magisk/$MODID
 rm -rf /data/unencrypted/magisk/$MODID
 rm -rf /cache/magisk/$MODID
 ui_print " "
+# power save
+FILE=$MODPATH/system/etc/sysconfig/*
+if [ "`grep_prop power.save $OPTIONALS`" == 1 ]; then
+  ui_print "- $MODNAME will not be allowed in power save."
+  ui_print "  It may save your battery but decreasing $MODNAME performance."
+  for PKGS in $PKG; do
+    sed -i "s/<allow-in-power-save package=\"$PKGS\"\/>//g" $FILE
+    sed -i "s/<allow-in-power-save package=\"$PKGS\" \/>//g" $FILE
+  done
+  ui_print " "
+fi
 
 # function
 conflict() {
