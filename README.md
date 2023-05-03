@@ -31,7 +31,7 @@
 - Android 13 CrDroid ROM
 
 ## Known Issue
-- Does not unlock screen automatically
+- Full screen alarm does not launch on top of keyguard
 
 ## Optionals
 - https://t.me/androidryukimodsdiscussions/60861
