@@ -1,7 +1,7 @@
 id=MiuiClock
 name=Miui Clock
-version=v0.7
-versionCode=7
+version=v0.8
+versionCode=8
 author=Rei Ryuki the Fixer
 description=A clock app by Xiaomi Inc. ported for any Android 5 and up non-Miui ROM.
 
