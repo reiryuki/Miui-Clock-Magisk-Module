@@ -84,7 +84,15 @@ chcon u:object_r:app_data_file:s0 $DIR
 FILE=$MODPATH/cleaner.sh
 if [ -f $FILE ]; then
   . $FILE
-  rm -f $FILE
+  mv -f $FILE $FILE\.txt
 fi
+
+
+
+
+
+
+
+
 
 

@@ -7,5 +7,3 @@ allow { system_file system_lib_file vendor_file vendor_configs_file theme_data_f
 allow init { system_file system_lib_file vendor_file vendor_configs_file theme_data_file app_data_file } { dir file } relabelfrom
 
 
-
-

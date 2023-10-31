@@ -1,9 +1,11 @@
 MODPATH=${0%/*}
-API=`getprop ro.build.version.sdk`
 
 # log
 exec 2>$MODPATH/debug.log
 set -x
+
+# var
+API=`getprop ro.build.version.sdk`
 
 # property
 resetprop ro.miui.ui.version.code 14
@@ -64,7 +66,7 @@ PKG=com.miui.deskclock
 pm grant $PKG android.permission.READ_PHONE_STATE
 appops set $PKG SYSTEM_ALERT_WINDOW allow
 grant_permission
-if pm list packages | grep com.qualcomm.qti.poweroffalarm; then
+if appops get com.qualcomm.qti.poweroffalarm > /dev/null 2>&1; then
   pm grant $PKG org.codeaurora.permission.POWER_OFF_ALARM 2>/dev/null
 fi
 
