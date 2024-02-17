@@ -1,16 +1,23 @@
 # space
 ui_print " "
 
+# var
+UID=`id -u`
+LIST32BIT=`grep_get_prop ro.product.cpu.abilist32`
+if [ ! "$LIST32BIT" ]; then
+  LIST32BIT=`grep_get_prop ro.system.product.cpu.abilist32`
+fi
+
 # log
 if [ "$BOOTMODE" != true ]; then
-  FILE=/sdcard/$MODID\_recovery.log
+  FILE=/data/media/"$UID"/$MODID\_recovery.log
   ui_print "- Log will be saved at $FILE"
   exec 2>$FILE
   ui_print " "
 fi
 
 # optionals
-OPTIONALS=/sdcard/optionals.prop
+OPTIONALS=/data/media/"$UID"/optionals.prop
 if [ ! -f $OPTIONALS ]; then
   touch $OPTIONALS
 fi
@@ -228,10 +235,7 @@ elif [ ! -d /product/media ] && [ ! -d /system/media ]; then
   ui_print " "
 fi
 
-# unmount
-if [ "$BOOTMODE" == true ] && [ ! "$MAGISKPATH" ]; then
-  unmount_mirror
-fi
+
 
 
 
