@@ -30,9 +30,10 @@
 ## Tested on
 - Android 12.1 Nusantara ROM
 - Android 13 AOSP ROM & CrDroid ROM
+- Android 14 LineageOS ROM
 
 ## Known Issue
-- Full screen alarm does not launch on top of keyguard in non-AOSP signatured ROM without disabled Android Signature Verification
+- Full screen notification does not launch on top of keyguard in non-AOSP signatured ROM without disabled Android Signature Verification in Android 13 and bellow
 
 ## Optionals
 - https://t.me/androidryukimodsdiscussions/54012
