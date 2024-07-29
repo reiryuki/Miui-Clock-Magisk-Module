@@ -13,7 +13,6 @@ set -x
 # cleaning
 remove_cache
 remove_sepolicy_rule
-rm -rf /data/system/theme_magic
 
 
 

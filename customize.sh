@@ -29,6 +29,13 @@ if [ "`grep_prop debug.log $OPTIONALS`" == 1 ]; then
   ui_print " "
 fi
 
+# recovery
+if [ "$BOOTMODE" != true ]; then
+  MODPATH_UPDATE=`echo $MODPATH | sed 's|modules/|modules_update/|g'`
+  rm -f $MODPATH/update
+  rm -rf $MODPATH_UPDATE
+fi
+
 # run
 . $MODPATH/function.sh
 
@@ -54,7 +61,7 @@ NUM=21
 if [ "$API" -lt $NUM ]; then
   ui_print "! Unsupported SDK $API."
   ui_print "  You have to upgrade your Android version"
-  ui_print "  at least SDK API $NUM to use this module."
+  ui_print "  at least SDK $NUM to use this module."
   abort
 else
   ui_print "- SDK $API"
@@ -73,8 +80,7 @@ if [ "`grep_prop sepolicy.sh $OPTIONALS`" == 1 ]\
 fi
 
 # miuicore
-if [ ! -d /data/adb/modules_update/MiuiCore ]\
-&& [ ! -d /data/adb/modules/MiuiCore ]; then
+if [ ! -d /data/adb/modules/MiuiCore ]; then
   ui_print "! Miui Core Magisk Module is not installed."
   ui_print "  Please read github installation guide!"
   abort
@@ -83,20 +89,15 @@ else
   rm -f /data/adb/modules/MiuiCore/disable
 fi
 
-# global
-FILE=$MODPATH/service.sh
-if [ "`grep_prop miui.global $OPTIONALS`" == 1 ]; then
-  ui_print "- Global mode"
-  sed -i 's|#g||g' $FILE
-  ui_print " "
-fi
-
 # cleaning
 ui_print "- Cleaning..."
 PKGS=`cat $MODPATH/package.txt`
 if [ "$BOOTMODE" == true ]; then
   for PKG in $PKGS; do
-    RES=`pm uninstall $PKG 2>/dev/null`
+    FILE=`find /data/app -name *$PKG*`
+    if [ "$FILE" ]; then
+      RES=`pm uninstall $PKG 2>/dev/null`
+    fi
   done
 fi
 remove_sepolicy_rule

@@ -5,7 +5,7 @@
 - The MIT license specified here is for the Magisk Module only, not for Miui apps.
 
 ## Descriptions
-- A clock app by Xiaomi Inc. ported and integrated as a Magisk Module for all supported and rooted devices with Magisk
+- Clock app by Xiaomi Inc. ported and integrated as a Magisk Module for all supported and rooted devices with Magisk
 
 ## Sources
 - https://apkmirror.com com.android.deskclock by Xiaomi Inc.
@@ -22,15 +22,11 @@
 ## Installation Guide & Download Link
 - Install Miui Core Magisk Module first: https://github.com/reiryuki/Miui-Core-Magisk-Module
 - Install this module https://www.pling.com/p/1821974/ via Magisk app or KernelSU app or Recovery if Magisk installed
+- If you are using KernelSU, you need to disable Unmount Modules by Default in KernelSU app settings
 - Reboot
-- If you are using KernelSU, you need to allow superuser list manually all package name listed in package.txt (and your home launcher app also) (enable show system apps) and reboot after
-- If you are using SUList, you need to allow list manually your home launcher app (enable show system apps) and reboot after
+- If you are using KernelSU, you need to allow superuser list manually all package name listed in package.txt (and your home launcher app also) (enable show system apps) and reboot afterwards
+- If you are using SUList, you need to allow list manually your home launcher app (enable show system apps) and reboot afterwards
 - Go to app info of Miui Clock and allow the network access to be able to download online Timer sound
-
-## Tested on
-- Android 12.1 Nusantara ROM
-- Android 13 AOSP ROM & CrDroid ROM
-- Android 14 LineageOS ROM
 
 ## Known Issue
 - Full screen notification does not launch on top of keyguard in non-AOSP signatured ROM without disabled Android Signature Verification in Android 13 and bellow
