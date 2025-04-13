@@ -54,7 +54,7 @@ if [ "$API" -ge 33 ]; then
   appops set $PKG ACCESS_RESTRICTED_SETTINGS allow
 fi
 if [ "$API" -ge 34 ]; then
-  appops set "$PKG" READ_MEDIA_VISUAL_USER_SELECTED allow
+  appops set $PKG READ_MEDIA_VISUAL_USER_SELECTED allow
 fi
 PKGOPS=`appops get $PKG`
 UID=`dumpsys package $PKG 2>/dev/null | grep -m 1 Id= | sed -e 's|    userId=||g' -e 's|    appId=||g'`
