@@ -1,8 +1,4 @@
 # debug
 allow system_server system_file file write
 
-# context
-allow { system_file system_lib_file vendor_file vendor_configs_file theme_data_file system_data_file } labeledfs filesystem associate
-allow init { system_file system_lib_file vendor_file vendor_configs_file theme_data_file system_data_file } { dir file } relabelfrom
-
 

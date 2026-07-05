@@ -8,15 +8,13 @@
 Clock app by Xiaomi Inc. ported and integrated as a Magisk Module for all supported and rooted devices with Magisk
 
 ## Sources
-- https://apkmirror.com com.android.deskclock by Xiaomi Inc.
-- libmagiskpolicy.so: Magisk (stable) 30.7 (30700)
+https://apkmirror.com com.android.deskclock by Xiaomi Inc.
 
 ## Changelog
 
 v1.5
 - Set install-in-user-type config
 - Prepare /storage/emulated/"$USR"/Android/data/$PKG/files
-- Update libmagiskpolicy.so from Magisk (stable) 30.7 (30700)
 - Resets module folders/files permissions at post-fs-data
 - Move _uninstall.log to /data/adb/logs/
 

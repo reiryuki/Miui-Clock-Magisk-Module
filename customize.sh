@@ -145,14 +145,6 @@ fi
 # recovery
 mount_partitions_in_recovery
 
-# sepolicy
-FILE=$MODPATH/sepolicy.rule
-DES=$MODPATH/sepolicy.pfsd
-if [ "`grep_prop sepolicy.sh $OPTIONALS`" == 1 ]\
-&& [ -f $FILE ]; then
-  mv -f $FILE $DES
-fi
-
 # miuicore
 if [ ! -d /data/adb/modules/MiuiCore ]; then
   ui_print "! Miui Core Magisk Module is not installed."
@@ -214,43 +206,6 @@ if [ "`grep_prop data.cleanup $OPTIONALS`" == 1 ]; then
 #  ui_print "  Cleaning-up $MODID data..."
 #  cleanup
 #  ui_print " "
-fi
-
-# function
-permissive_2() {
-sed -i 's|#2||g' $MODPATH/post-fs-data.sh
-}
-permissive() {
-FILE=/sys/fs/selinux/enforce
-FILE2=/sys/fs/selinux/policy
-if [ "`toybox cat $FILE`" = 1 ]; then
-  chmod 640 $FILE
-  chmod 440 $FILE2
-  echo 0 > $FILE
-  if [ "`toybox cat $FILE`" = 1 ]; then
-    ui_print "  Your device can't be turned to Permissive state."
-    ui_print "  Using Magisk Permissive mode instead."
-    permissive_2
-  else
-    echo 1 > $FILE
-    sed -i 's|#1||g' $MODPATH/post-fs-data.sh
-  fi
-else
-  sed -i 's|#1||g' $MODPATH/post-fs-data.sh
-fi
-}
-
-# permissive
-if [ "`grep_prop permissive.mode $OPTIONALS`" == 1 ]; then
-  ui_print "- Using device Permissive mode."
-  rm -f $MODPATH/sepolicy.rule
-  permissive
-  ui_print " "
-elif [ "`grep_prop permissive.mode $OPTIONALS`" == 2 ]; then
-  ui_print "- Using Magisk Permissive mode."
-  rm -f $MODPATH/sepolicy.rule
-  permissive_2
-  ui_print " "
 fi
 
 # function
@@ -326,17 +281,5 @@ elif [ ! -d /product/media ] && [ ! -d /system/media ]; then
   ui_print "! /product/media & /system/media not found"
   ui_print " "
 fi
-
-
-
-
-
-
-
-
-
-
-
-
 
 
