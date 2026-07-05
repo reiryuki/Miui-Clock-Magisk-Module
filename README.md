@@ -16,6 +16,9 @@ Clock app by Xiaomi Inc. ported and integrated as a Magisk Module for all suppor
 v1.5
 - Set install-in-user-type config
 - Prepare /storage/emulated/"$USR"/Android/data/$PKG/files
+- Update libmagiskpolicy.so from Magisk (stable) 30.7 (30700)
+- Resets module folders/files permissions at post-fs-data
+- Move _uninstall.log to /data/adb/logs/
 
 v1.4
 - Fix SystemUI visibility while changing between dark and light theme immediately
