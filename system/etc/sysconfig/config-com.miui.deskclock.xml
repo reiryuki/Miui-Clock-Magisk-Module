@@ -2,4 +2,9 @@
 <config>
     <hidden-api-whitelisted-app package="com.miui.deskclock"/>
     <allow-in-power-save package="com.miui.deskclock"/>
+    <install-in-user-type package="com.miui.deskclock">
+        <install-in user-type="FULL" />
+        <do-not-install-in user-type="android.os.usertype.profile.CLONE" />
+        <do-not-install-in user-type="android.os.usertype.profile.PRIVATE" />
+    </install-in-user-type>
 </config>
